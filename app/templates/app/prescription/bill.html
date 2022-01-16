@@ -1,0 +1,75 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Presecription{% endblock title %}
+{% block css %}
+<style>
+    
+    table,
+    td,
+    th,
+    tr {
+        border: 2px solid brown;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        
+    }
+    .td{
+        text-transform: uppercase;
+        color: black;
+        font-weight: 600;
+
+    }
+    .uname{
+        text-transform: uppercase;
+        font-weight: 600;
+        color: black;
+    }
+</style>
+{% endblock css %}
+{% block content%}
+<!-- <h1 class="text-center my-1 p-1"> Clinik  Name</h1> -->
+<h2 class="text-center p-2 mx-1 my-2">Your Presecription</h2>
+
+<a class="btn btn-success" href="/clinik/printrecipt"> Print Your Receipt </a>
+<a class="btn btn-success" href="/clinik/history">Save</a>
+<a class="btn btn-success" href="/clinik/rprint">Back To Home</a>
+<hr>
+
+<div class="container my-3">
+    <h4 class="text-left uname p-2 mx-1 my-2">Patient Name:{{ uname }}</h4>
+    <table class="table  table-hover my-2 text-center my-3">
+        <thead>
+            <tr>
+
+                <th>Med Name</th>
+                <th>Time</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in bills %}
+            <tr>
+                <td class="td">{{i.medicinename}}</td>
+                <td class="td">{{i.medicinetiming}}</td>
+                <td class="td">{{i.medicineprice}}</td>
+            </tr>
+            {% endfor %}
+            
+            
+            {% if outsideMed %}
+            <tr><td colspan=3><strong>Outside Medicines </strong></td></tr>
+            {% for i in outsideMed %}
+            <tr>
+                <td class="td">{{i.ousidemedicinename}}</td>
+                <td class="td">{{i.ousidemedicinetime}}</td>
+                <td class="td">No price for outside</td>
+            </tr>
+            
+            {% endfor %}
+            
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+    {% endblock content%}

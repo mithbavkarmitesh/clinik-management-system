@@ -1,0 +1,49 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Bill{% endblock title %}
+{% block css %}{% endblock css %}
+
+{% block content%}
+
+
+<span class="d-block text-center p-2">
+    <strong>{{ uname }} </strong> Your Reciept <br>
+</span>
+<a class="btn btn-success" href="/clinik/printrecipt"> Print Your Receipt </a>
+<a class="btn btn-success" href="/clinik/rprint">Back To Home</a>
+<hr>
+<!-- {% for i in bills %}
+
+<div class="p-2 m-1">
+    <div class="p-2 my-2">
+        <span>{{i.medicinename}}</span>
+    </div>
+    <div class="p-2 my-2">
+        <span>{{i.medicinetiming}}</span>
+    </div>
+    <div class="p-2 my-2">
+        <span>{{i.medicineprice}}</span>
+    </div>
+    
+    <hr class="my-2">
+</div>
+
+{% endfor %}
+
+{% if outsideMed %}
+<h2> Outside Medicines </h2>
+{% endif %}
+{% for i in outsideMed %}
+<div class="p-2 m-1">
+    <div class="p-2 my-2">
+        <span>{{i.ousidemedicinename}}</span>
+    </div>
+    <div class="p-2 my-2">
+        <span>{{i.ousidemedicinetime}}</span>
+    </div>
+    
+    <hr class="my-2">
+</div> -->
+{% endfor %}
+
+{% endblock content %}

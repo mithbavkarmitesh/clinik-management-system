@@ -1,0 +1,40 @@
+{% extends 'app/basic.html' %}
+{% block content%}
+<div class=" container col-sm-12 my-3 ">
+    <form class="d-flex" method="POST" action="{% url 'searchh' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" name="searchh" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    {% if result  %}
+    
+    <h2 class="p-2">Inside Medicine History </h2>
+    <table class="table table-secondary table-hover">
+        <thead>
+        <th>Username</th>
+        <th>Medicine</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>purchased date</th>
+    </thead>
+    <tbody>
+        {% for i in result %}
+        <tr>
+            <td>{{i.username}}</td>
+            <td>{{i.medicinename}}</td>
+            <td>{{i.medicinetiming}}</td>
+            <td>{{i.medicineprice}}</td>
+            <td>{{i.time}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% else %}
+        <h4 class="text-center alert alert-warning my-3">No Record Found</h4>
+{% endif %}
+</div>
+{%endblock content%}

@@ -1,0 +1,38 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Update Notes{% endblock title %}
+{% block css %} 
+<style>
+    .form-control{
+    font-weight:600;
+  }
+  label{
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgb(228, 228, 106);
+  
+  }
+  
+  </style>
+{% endblock css %}
+
+{% block content%}
+
+
+
+
+<div class="col-sm-4 offset-4">
+    <h4 class="alert alert-info text-center py-3 my-3">Update Notes</h4>
+</div>
+
+
+<form action="" method="post">
+    <div class="container">
+    {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class=" btn btn-success" value="Update" >
+            
+            
+        </div>
+    </form>
+{% endblock content%}

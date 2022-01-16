@@ -1,0 +1,91 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Login Form{% endblock title %}
+{% block css %}
+<style>
+    
+    .errorlist{
+        color:red;
+        font-weight: 600;
+    }
+    .form-control{
+        font-weight: 600;
+    }
+    label{
+        font-weight: 500;
+        font-size: large;
+    }
+    .button{
+        height: 50px;
+        width: 200px;
+    }
+    .showpasswordtoggle{
+       
+        cursor: pointer;
+        transition: all;
+        float: right;
+        font-weight: 600;
+        
+        color: black;
+
+    }
+    .showpasswordtoggle:hover{
+        
+        font-weight: 700;
+        transform: scale(1.2);
+        color: rgb(218, 106, 32);
+    }
+</style>
+{% endblock css %}
+{% block content%}
+
+
+
+<div class="container my-3 py-3 col-md-4">
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group my-3" >
+            
+            <label for="{{ form.username.id_for_label }}"><b>Username:</b></label><br>
+            <b> {{ form.username }}</b>
+            {{ form.username.errors }}
+            
+        </div>
+        <div class="form-group my-3">
+            
+            <label  for="{{ form.password.id_for_label }}"><b>Password:</b></label><br>
+            {{ form.password }}
+            {{ form.password.errors }}
+            <div class="text-left my-2">
+                
+                <small class=" showpasswordtoggle "> Show</small>
+                
+            </div>
+        </div>
+        <div class="container text-center ">
+            <button type="submit" class="bg-success button py-6 px-3 "><b>Login</b></button>
+        </div>
+</form>
+</div>
+<script>
+    const showPasswordToggle=document.querySelector(".showpasswordtoggle");
+    const passwordfeild=document.querySelector("#pass")
+
+const handToggleInput=(e)=>{
+    if(showPasswordToggle.textContent == 'SHOW'){
+        showPasswordToggle.textContent="HIDE";
+        passwordfeild.setAttribute("type","text")
+
+    }else{
+        showPasswordToggle.textContent="SHOW";
+        passwordfeild.setAttribute("type","password")
+
+        
+    }
+}
+
+showPasswordToggle.addEventListener("click",handToggleInput);
+</script>
+{% endblock content%}

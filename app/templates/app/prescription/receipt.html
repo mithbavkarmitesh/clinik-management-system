@@ -1,0 +1,103 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Receipt{% endblock title %}
+{% block css %}
+<style>
+
+    .dt{
+    
+        font-family:Jazz LET, fantasy	;
+        text-transform: uppercase;
+        font-size: 600px;
+        color: rgb(170, 224, 116);
+        
+    } 
+    table,
+    td,
+    th,
+    tr {
+        border: 2px solid rgb(19, 16, 16);
+       text-align: center;
+       text-transform: uppercase;
+       
+    }
+      .tf{
+        text-transform: uppercase;
+        color: black;
+        font-weight: 600;
+
+      }
+
+
+
+</style>
+
+{% endblock css %}
+
+{% block content%}
+<br>
+<br>
+
+{% for i in ddetails %}
+<div class="container  text-center dt  myt-3">
+    <h2>{{i.hospitaname}}</h2>
+    <h5>{{i.doctorname}} </h5>
+    <h5>Address:{{i.address}}</h5>
+    <h5>Mobile No:{{i.mobileno}} Malvan:{{i.pincode}}</h5>
+    {% endfor %}
+</div>
+<hr style="color:blue;" >
+<br>
+
+<div class="container">
+<h2 class=" p-2 mx-1 my-3 text-center" style="font-family: Jazz LET, fantasy ;text-transform:uppercase;color: rgb(170, 224, 116) ;">Patient Name:{{ uname }}</h2>
+    
+
+    <table class="table table-secondary table-hover my-2 text-center">
+        <thead>
+            <th>Medicine Name</th>
+            <th>Time</th>
+            <th>Price</th>
+            
+
+        </thead>
+        <tbody>
+            {% for i in bills %}
+            <tr>
+                <td class="tf">{{i.medicinename}}</td>
+                <td class="tf">{{i.medicinetiming}}</td>
+                <td class="tf">{{i.medicineprice}}</td>
+                
+
+            </tr>
+{% endfor %}
+
+
+{% if outsideMed %}
+<tr><td colspan=3><strong>Outside Medicines </strong></td></tr>
+{% for i in outsideMed %}
+<tr>
+    <td>{{i.ousidemedicinename}}</td>
+    <td>{{i.ousidemedicinetime}}</td>
+    <td>No price for outside</td>
+</tr>
+
+
+{% endfor %}
+
+{% endif %}
+</tbody>
+
+</table>
+<div class="my-3 text-center " style="font-family: Jazz LET, fantasy ;text-transform:uppercase;color: rgb(170, 224, 116) ;" >
+    <h5 style="margin-left:880px;">Total:{{total}}</h5>
+</div>  
+
+
+</div>
+
+
+
+
+
+{% endblock content%}

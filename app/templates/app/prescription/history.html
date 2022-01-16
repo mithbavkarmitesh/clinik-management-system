@@ -1,0 +1,72 @@
+{% extends 'app/basic.html' %}
+{% block css %} 
+<style>
+    .p-2{
+        color: red;
+        text-align: center;
+    }
+    table,
+    td,
+    th,
+    tr {
+        border: 2px solid brown;
+       text-align: center;
+       text-transform: capitalize;
+       font-weight: 600;
+       
+    }
+     
+</style>
+{% endblock css %}
+{% block content%}
+<div class=" container col-sm-12 my-3 ">
+    <form class="d-flex" method="POST" action="{% url 'searchh' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" name="searchh" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    
+    
+    <h2 class="p-2">Inside Medicine History </h2>
+    <table class="table table-secondary table-hover">
+        <thead>
+        <th>Username</th>
+        <th>Medicine</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>purchased date</th>
+    </thead>
+    <tbody>
+        {% for i in reciepts %}
+        <tr>
+            <td>{{i.username}}</td>
+            <td>{{i.medicinename}}</td>
+            <td>{{i.medicinetiming}}</td>
+            <td>{{i.medicineprice}}</td>
+            <td>{{i.time}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 class="p-2">OutSide Medicine History </h2>
+<table class="table table-secondary table-hover">
+    <thead>
+        <th>Username</th>
+        <th>Medicine</th>
+        <th>Time</th>
+        <th>purchased date</th>
+    </thead>
+    <tbody>
+        {% for i in out_meds %}
+        <tr>
+            <td>{{i.username}}</td>
+            <td>{{i.ousidemedicinename}}</td>
+            <td>{{i.ousidemedicinetime}}</td>
+            <td>{{i.time}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{%endblock content%}

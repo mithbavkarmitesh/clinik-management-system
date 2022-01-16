@@ -1,0 +1,65 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Medicine Enter{% endblock title %}
+{% block css %}
+<style>
+    input{
+        font-weight: 600;
+    }
+    .form-control{
+         font-weight:600;
+         text-transform: uppercase;
+    }
+</style>
+{% endblock css %}
+
+{% block content%}
+<div class="container my-3 py-3">
+    <h3 class="my-3 py-3 bg-success text-center">Enter All Details</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="my-1">
+            <input type="text" class="form-control" name="username" placeholder="Enter Full Name" required>
+        </div>
+        <div class="my-1 border border-dark shadow p-2">
+            <input type="text" class="my-2 form-control" name="med_1" placeholder="med 1">
+            <input type="text" class="my-2 form-control" name="med_1_time" placeholder="time">
+            <input type="number" class="my-2 form-control" name="price_1" placeholder="Enter price">
+        </div>
+       
+
+        <div class="my-1 border border-dark shadow p-2">
+            <input type="text" class="my-1 form-control" name="med_2" placeholder="med 2">
+            <input type="text" class="my-1 form-control" name="med_2_time" placeholder="time">
+            <input type="number" class="my-1 form-control" name="price_2" placeholder="Enter price">
+        </div>
+        
+        <div class="my-1 border border-dark shadow p-2">
+            <input type="text" class="my-1 form-control" name="med_3" placeholder="med 3">
+            <input type="text" class="my-1 form-control" name="med_3_time" placeholder="time">
+            <input type="number" class="my-1 form-control" name="price_3" placeholder="Enter price">
+        </div>  
+
+        <div class="my-1 border border-dark shadow p-2">
+            <input type="text" class="my-1 form-control" name="med_4" placeholder="med 4">
+            <input type="text" class="my-1 form-control" name="med_4_time" placeholder="time">
+            <input type="number" class="my-1 form-control" name="price_4" placeholder="Enter price">
+        </div>  
+        
+        <div class="my-1 border border-dark shadow p-2">
+            <input type="text" class="my-1 form-control" name="med_5" placeholder="med outside name">
+            <input type="text" class="my-1 form-control" name="time_5" placeholder="Enter timing">
+        </div>  
+        
+        
+        
+       <button type="submit" class="btn btn-primary my-3 " >Next</button>
+
+    </form>
+    
+</div>
+    
+
+{% endblock content%}
+

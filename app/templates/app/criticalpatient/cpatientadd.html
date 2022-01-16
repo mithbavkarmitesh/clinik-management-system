@@ -1,0 +1,36 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}CriticalPatient Add{% endblock title %}
+{% block css %}
+<style>
+  .form-control{
+  font-weight:600;
+}
+label{
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgb(228, 228, 106);
+
+}
+
+</style>
+{% endblock css %}
+
+{% block content%}
+
+<div class="container">
+  <h4 class="text-center bg-info py-3 my-3">Add Critical Patient</h4>
+  
+  <form action="" method="post" >
+    
+    {% csrf_token %}
+    {{fm.as_p}}
+    
+    <input type="submit" class=" btn btn-success" value="Add Patient" >
+    
+  </form>
+  
+</div>
+
+
+{%endblock content%}

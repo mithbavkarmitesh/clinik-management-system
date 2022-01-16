@@ -1,0 +1,39 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Add Notes {% endblock title %}
+{% block css %} 
+<style>
+.form-control{
+  font-weight:600;
+}
+label{
+  font-weight: 700;
+  color: rgb(228, 228, 106);
+  text-transform:uppercase;
+
+}
+
+
+</style>
+{% endblock css %}
+
+{% block content%}
+
+<div class="container">
+  <h4 class="text-center bg-success py-3 my-3">Add Quick Note</h4>
+  
+  <form action="" method="post"  >
+    {% csrf_token %}
+    {{fm.as_p}}
+    
+    <input type="submit" class=" btn btn-info" value="Save Notes" >
+  </form>
+  
+</div>
+
+
+
+
+
+
+{%endblock content%}

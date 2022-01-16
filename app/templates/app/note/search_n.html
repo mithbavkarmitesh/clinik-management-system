@@ -1,0 +1,99 @@
+{% extends 'app/basic.html' %}
+{% load static %}
+{%block title %}Serach Notes{% endblock title %}
+{% block css %}
+<style>
+      table,
+    td,
+    th,
+    tr {
+        border: 2px solid brown;
+       text-align: center;
+       text-transform: uppercase;
+       
+    }
+      .td{
+        text-transform: uppercase;
+        color: black;
+        font-weight: 600;
+
+      }
+</style>
+
+{% endblock css %}
+
+{% block content%}
+<div class=" container col-sm-12 my-3 ">
+    <form class="d-flex" method="POST" action="{% url 'searchn' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" name="searchn" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
+
+
+<div class=" container col-sm-12 ">
+
+
+    {% if result %}
+
+    <h4 class=" text-center bg-info py-3 my-3">Notes</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">DESCRIPTON</th>
+                <th scope="col">DATE</th>
+                <th scope="col">ACTION</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for value in result %}
+                <td class="td" scope="row">{{forloop.counter}}</td>
+                <td class="td" scope="row">{{value.title}}</td>
+                <td class="td">{{value.desc}}</td>
+                <td class="td">{{value.time}}</td>
+
+               
+                <td>
+                    <a href="{% url 'nupdate' value.id %}" class="btn btn-warning btn-sm ">EDIT</a>
+                    <form action="{% url 'ndelete' value.id %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+
+            </tr>
+
+
+
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% else %}
+    <h4 class="text-center alert alert-warning">No Record Found</h4>
+    {% endif %}
+
+
+</div>
+
+<div class="container">
+    <a href="/clinik/notes/"><button type="submit" class="btn btn-info">Back</button></a>
+</div>
+
+
+
+
+
+
+
+
+
+{%endblock content%}
